@@ -31,9 +31,6 @@ class User(AbstractUser):
     def clean_username(self):
         if not self.username:
             temp_username = f"instagram-{str(uuid.uuid4()).split('-')[-1]}"
-            while User.objects.get(username=temp_username).exists():
-                temp_username = f"instagram-{str(uuid.uuid4()).split('-')[-1]}{random.randint(0,9)}"
-
             self.username = temp_username
 
     def clean_password(self):
